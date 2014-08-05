@@ -1,0 +1,83 @@
+mysql> CREATE TABLE testing_table(
+    -> name Char(20),
+    -> contact_name Char(20),
+    -> roll_no Char(20)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> INSERT INTO testing_table VALUES("Dilpreet","dp",103);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM testing_table;
++----------+--------------+---------+
+| name     | contact_name | roll_no |
++----------+--------------+---------+
+| Dilpreet | dp           | 103     |
++----------+--------------+---------+
+1 row in set (0.00 sec)
+
+mysql> ALTER table testing_table
+    -> DROP COLUMN name;
+Query OK, 1 row affected (0.43 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM testing_table;
++--------------+---------+
+| contact_name | roll_no |
++--------------+---------+
+| dp           | 103     |
++--------------+---------+
+1 row in set (0.01 sec)
+
+mysql> ALTER TABLE testing_table
+    -> CHANGE contact_name username char(20);
+Query OK, 1 row affected (0.38 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM testing_table;
++----------+---------+
+| username | roll_no |
++----------+---------+
+| dp       | 103     |
++----------+---------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE testing_table ADD first_name char(20);
+Query OK, 1 row affected (0.09 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE testing_table ADD last_name char(20);
+Query OK, 1 row affected (0.14 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM testing_table;
++----------+---------+------------+-----------+
+| username | roll_no | first_name | last_name |
++----------+---------+------------+-----------+
+| dp       | 103     | NULL       | NULL      |
++----------+---------+------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE testing_table 
+    -> MODIFY roll_no INT(20);
+Query OK, 1 row affected (0.06 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM testing_table;
++----------+---------+------------+-----------+
+| username | roll_no | first_name | last_name |
++----------+---------+------------+-----------+
+| dp       |     103 | NULL       | NULL      |
++----------+---------+------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> DESC testing_table;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| username   | char(20) | YES  |     | NULL    |       |
+| roll_no    | int(20)  | YES  |     | NULL    |       |
+| first_name | char(20) | YES  |     | NULL    |       |
+| last_name  | char(20) | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+4 rows in set (0.04 sec)
